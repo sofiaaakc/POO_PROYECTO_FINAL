@@ -10,5 +10,15 @@ package paq.proyecto;
  */
 public class Recepcionista extends Empleado
 {
+
+    public Recepcionista(String usuario, String contraseña, int dni, String nom, String apell) {
+        super(usuario, contraseña, dni, nom, apell);
+    }
+
+    @Override
+    public void determinarrol() {
+        this.rol = "Recepcionista";
+    }
+    
     
 }

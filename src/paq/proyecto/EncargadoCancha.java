@@ -10,5 +10,15 @@ package paq.proyecto;
  */
 public class EncargadoCancha extends Empleado
 {
+
+    public EncargadoCancha(String usuario, String contraseña, int dni, String nom, String apell) {
+        super(usuario, contraseña, dni, nom, apell);
+    }
+
+    @Override
+    public void determinarrol() {
+        this.rol = "EncargadoCancha";
+    }
+    
     
 }
