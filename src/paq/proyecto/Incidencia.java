@@ -10,12 +10,12 @@ package paq.proyecto;
  */
 public class Incidencia 
 {
-  private String descripcion;
-    private double cargo;
+ private String descripcion;
+    private double montoCargo;
 
-    public Incidencia(String descripcion, double cargo) {
+    public Incidencia(String descripcion, double montoCargo) {
         this.descripcion = descripcion;
-        this.cargo = cargo;
+        this.montoCargo = montoCargo;
     }
 
     public String getDescripcion() {
@@ -26,12 +26,12 @@ public class Incidencia
         this.descripcion = descripcion;
     }
 
-    public double getCargo() {
-        return cargo;
+    public double getMontoCargo() {
+        return montoCargo;
     }
 
-    public void setCargo(double cargo) {
-        this.cargo = cargo;
+    public void setMontoCargo(double montoCargo) {
+        this.montoCargo = montoCargo;
     }
       
 }
