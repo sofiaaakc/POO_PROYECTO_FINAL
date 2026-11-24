@@ -13,6 +13,7 @@ public class Recepcionista extends Empleado
 
     public Recepcionista(String usuario, String contraseña, int dni, String nom, String apell) {
         super(usuario, contraseña, dni, nom, apell);
+        this.determinarrol();
     }
 
     @Override
