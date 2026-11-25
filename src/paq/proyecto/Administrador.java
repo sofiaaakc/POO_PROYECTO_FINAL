@@ -10,5 +10,16 @@ package paq.proyecto;
  */
 public class Administrador extends Empleado
 {
+
+    public Administrador(String usuario, String contraseña, int dni, String nom, String apell) {
+        super(usuario, contraseña, dni, nom, apell);
+        this.determinarrol();
+    }
+
+    @Override
+    public void determinarrol() {
+        this.rol= "Administrador";
+    }
+    
     
 }

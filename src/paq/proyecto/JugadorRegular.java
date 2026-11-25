@@ -10,5 +10,23 @@ package paq.proyecto;
  */
 public class JugadorRegular extends Jugador
 {
+
+    public JugadorRegular(int tel, int reserF, String correo, int dni, String nom, String apell) {
+        super(tel, reserF, correo, dni, nom, apell);
+        this.getTipoJugador();
+    }
+
+    @Override
+    public void getTipoJugador() 
+    {
+        this.tipo = "Regular";
+    }
+
+    @Override
+    public double Calculardsct(int horas) 
+    {
+        return 0.0; //no tiene descuento
+    }
+    
     
 }

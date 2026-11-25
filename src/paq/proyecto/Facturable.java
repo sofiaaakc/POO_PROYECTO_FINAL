@@ -10,5 +10,7 @@ package paq.proyecto;
  */
 public interface Facturable 
 {
+    float calcularMonto();
+    String obtenerDetalle();
     
 }
