@@ -19,21 +19,47 @@ public class GestionCancha
         arreglo = new Cancha[3];
         conta = 0;
     }
+
+    public Cancha[] getArreglo() {
+        return arreglo;
+    }
+
+    public void setArreglo(Cancha[] arreglo) {
+        this.arreglo = arreglo;
+    }
+
+    public int getConta() {
+        return conta;
+    }
+
+    public void setConta(int conta) {
+        this.conta = conta;
+    }
+    
     
     public void Ingresar(Cancha ref)
     {
         if(conta<arreglo.length)
         {
-            arreglo[conta] = ref;
-            conta++;
+            if(BuscarPosPorCodigo(ref.getCodigo()) != -1 )
+            {
+                System.out.println("Error. Ya existe una cancha con ese código.");
+            }
+            
+            else
+            {
+                arreglo[conta] = ref;
+                conta++;
+            }
         }
+        
         else
         {
-            System.out.println("Error. No hay espacio");
+            System.out.println("Error. No hay espacio.");
         }
     }
     
-    public int BuscarPos(int codigo) 
+    public int BuscarPosPorCodigo(int codigo) 
     {
         for (int i = 0; i < conta; i++) {
             if (arreglo[i].getCodigo()== codigo) 
@@ -43,53 +69,51 @@ public class GestionCancha
         }
         return -1;
     }
-
-
-    public Empleado buscarporDni(int dni) {
-        int pos = buscarPosPorDni(dni);
-        if (pos == -1) {
+    
+    public Cancha buscarCanchaCodigo(int codigo)
+    {
+        int pos = BuscarPosPorCodigo(codigo);
+        if(pos == -1)
+        {
             return null;
         }
-        return lista[pos];
+        return arreglo[pos];
     }
 
-    public boolean Modificar(int dni, String nom, String apell, String usuario, String contraseña) {
-        int pos = buscarPosPorDni(dni);
-        if (pos == -1) {
+    public boolean Modificar(int codigo, String nombreNuevo, float tarifabaseNueva, String estadoNuevo, int horarioNuevo)
+    {
+        int pos = BuscarPosPorCodigo(codigo);
+        if(pos == -1)
+        {
             return false;
         }
-
-        int posUsuario = buscarPosPorUsuario(usuario);
-        if (posUsuario != -1 && posUsuario != pos) {
+        
+        Cancha cancha = arreglo[pos];
+        cancha.setNombre(nombreNuevo);
+        cancha.setTarifaBaseXHr(tarifabaseNueva);
+        cancha.setEstado(estadoNuevo);
+        cancha.setHorario(horarioNuevo);
+        
+        return true;
+    }
+    
+    public boolean Eliminar(int codigo)
+    {
+        int pos = BuscarPosPorCodigo(codigo);
+        if(pos == -1)
+        {
             return false;
         }
-
-        Empleado emp = lista[pos];
-        emp.setNom(nom);
-        emp.setApell(apell);
-        emp.setUsuario(usuario);
-        emp.setContraseña(contraseña);
+        
+        for(int i = pos; i < conta - 1; i++)
+        {
+            arreglo[i] = arreglo[i+1];
+        }
+        
+        arreglo[conta - 1] = null;
+        conta = conta - 1;
         return true;
     }
 
-    public boolean EliminarEmpleado(int dni) {
-        int pos = buscarPosPorDni(dni);
-        if (pos == -1) {
-            return false;
-        }
-        for (int i = pos; i < conta - 1; i++) {
-            lista[i] = lista[i + 1];
-        }
-        lista[conta - 1] = null;
-        conta--;
-        return true;
-    }
-
-    public Empleado[] getLista() {
-        return lista;
-    }
-
-    public int getConta() {
-        return conta;
-    }
+    
 }

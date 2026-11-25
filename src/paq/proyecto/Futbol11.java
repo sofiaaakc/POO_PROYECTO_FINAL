@@ -10,7 +10,7 @@ package paq.proyecto;
  */
 public class Futbol11 extends Cancha
 {
-
+//aa
     public Futbol11(int codigo, int horario, float tarifaBaseXHr, String nombre, String estado) 
     {
         super(codigo, horario, tarifaBaseXHr, nombre, "Futbol 11", estado);
@@ -37,5 +37,5 @@ public class Futbol11 extends Cancha
     }
     
     
-    
+
 }

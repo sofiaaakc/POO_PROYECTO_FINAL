@@ -9,7 +9,7 @@ package paq.proyecto;
  * @author aleja
  */
 public abstract class Cancha 
-
+//aaaa
 {
     protected int codigo, horario, capMaxJugadores;
     protected float tarifaBaseXHr, recargo;
@@ -91,5 +91,5 @@ public abstract class Cancha
 
     public abstract float calcularTarifaBaseXHr();
     
-    
+
 }

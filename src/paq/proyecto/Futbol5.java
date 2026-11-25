@@ -11,6 +11,7 @@ package paq.proyecto;
 public class Futbol5 extends Cancha
 
 {
+    //aa
 
     public Futbol5(int codigo, int horario, float tarifaBaseXHr, String nombre, String estado) 
     {
@@ -39,5 +40,5 @@ public class Futbol5 extends Cancha
     
     
     
-    
+
 }
