@@ -26,7 +26,7 @@ public class Futbol11 extends Cancha
         float tarifaFinal;
         if(this.horario >= 18)
         {
-            tarifaFinal = this.tarifaBaseXHr + this.tarifaBaseXHr*this.recargo;
+            tarifaFinal = this.tarifaBaseXHr * (1 + this.recargo);
         }
         else
         {

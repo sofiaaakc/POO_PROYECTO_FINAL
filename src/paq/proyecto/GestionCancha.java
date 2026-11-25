@@ -16,7 +16,7 @@ public class GestionCancha
 
     public GestionCancha() 
     {
-        arreglo = new Cancha[3];
+        arreglo = new Cancha[30];
         conta = 0;
     }
 
@@ -37,31 +37,31 @@ public class GestionCancha
     }
     
     
-    public void Ingresar(Cancha ref)
+   
+
+    public boolean Ingresar(Cancha ref) 
     {
-        if(conta<arreglo.length)
+        if (ref == null) 
         {
-            if(BuscarPosPorCodigo(ref.getCodigo()) != -1 )
-            {
-                System.out.println("Error. Ya existe una cancha con ese código.");
-            }
-            
-            else
-            {
-                arreglo[conta] = ref;
-                conta++;
-            }
+            return false;
         }
-        
-        else
+        if (conta < arreglo.length) 
         {
-            System.out.println("Error. No hay espacio.");
+            if (BuscarPosPorCodigo(ref.getCodigo()) != -1) 
+            {
+                return false; 
+            }
+            arreglo[conta] = ref;
+            conta++;
+            return true;
         }
+        return false; 
     }
-    
+
     public int BuscarPosPorCodigo(int codigo) 
     {
-        for (int i = 0; i < conta; i++) {
+        for (int i = 0; i < conta; i++) 
+        {
             if (arreglo[i].getCodigo()== codigo) 
             {
                 return i;

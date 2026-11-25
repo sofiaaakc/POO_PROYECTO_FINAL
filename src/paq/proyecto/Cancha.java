@@ -22,6 +22,7 @@ public abstract class Cancha
         this.nombre = nombre;
         this.tipo = tipo;
         this.estado = estado;
+        this.capMaxJugadores = 0;
     }
     
 
