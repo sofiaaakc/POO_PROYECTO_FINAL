@@ -21,15 +21,11 @@ public class GestionReservas {
         this.contaCompro = 0;
     }
 
-    public boolean Validardispo(Cancha c, String fecha, int horainicio, int duracion) {
+    public boolean Validardispo(Cancha c, String fecha, String horainicio, int duracion) {
         if (c == null || c.getEstado().equalsIgnoreCase("En Mantenimiento")) {
             return false;
         }
         if (duracion < 1 || duracion > 3) {
-            return false;
-        }
-        int horafin = horainicio + duracion;
-        if (horainicio < 8 || horafin > 23) {
             return false;
         }
 
@@ -37,14 +33,9 @@ public class GestionReservas {
             Reserva r = Reservas[i];
             if (r.getCcancha().getCodigo() == c.getCodigo() &&
                 r.getFecha().equals(fecha) &&
+                r.getHoraInicio().equals(horainicio) &&
                 !r.getEstado().equalsIgnoreCase("Cancelada")) {
-
-                int inicioExistente = Integer.parseInt(r.getHoraInicio().substring(0, 2));
-                int finExistente = inicioExistente + r.getDuracion();
-
-                if (horainicio < finExistente && horafin > inicioExistente) {
-                    return false;
-                }
+                return false;
             }
         }
         return true;
@@ -55,8 +46,7 @@ public class GestionReservas {
         if (conta >= Reservas.length) {
             return null;
         }
-        int horaNum = Integer.parseInt(horaInicio.substring(0, 2));
-        if (!Validardispo(c, fecha, horaNum, duracion)) {
+        if (!Validardispo(c, fecha, horaInicio, duracion)) {
             return null;
         }
 
@@ -144,7 +134,7 @@ public class GestionReservas {
         String texto = "=== TOP JUGADORES ===\n";
         for (int i = 0; i < conta; i++) {
             Jugador j = Reservas[i].getJugadorTitular();
-            if (j.getReserF()> 0) {
+            if (j.getReserF() > 0) {
                 texto += j.getNom() + " - Reservas finalizadas: " + j.getReserF() + "\n";
             }
         }
